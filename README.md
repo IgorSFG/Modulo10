@@ -10,11 +10,11 @@ git clone https://github.com/IgorSFG/Modulo10.git
 ## Atividades
 As atividades ponderadas podem ser encontradas a seguir.
 
-### [POND1: Construção de um relatório de teste de carga](https://github.com/IgorSFG/Modulo10/tree/main/src/pond1)
+### [POND1: Flask User Management API](https://github.com/IgorSFG/Modulo10/tree/main/pond1)
 
 ## Testes
 As provas podem ser encontradas a seguir.
 
-### [PROVA1](https://github.com/IgorSFG/Modulo9/tree/main/tests/test1)
-### [PROVA2](https://github.com/IgorSFG/Modulo9/tree/main/tests/test2)
+### [PROVA1](https://github.com/IgorSFG/Modulo9/tree/main/test1)
+### [PROVA2](https://github.com/IgorSFG/Modulo9/tree/main/test2)
 

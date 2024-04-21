@@ -4,7 +4,6 @@ from flask import Flask
 from database.database import db
 from flask import jsonify, request, render_template
 from database.models import User
-import sys
 
 from flask_jwt_extended import JWTManager, set_access_cookies
 
@@ -20,6 +19,7 @@ app.config['JWT_TOKEN_LOCATION'] = ['cookies']
 jwt = JWTManager(app)
 
 # Verifica se o parâmetro create_db foi passado na linha de comando
+import sys
 if len(sys.argv) > 1 and sys.argv[1] == 'create_db':
     # cria o banco de dados
     with app.app_context():
