@@ -1,4 +1,4 @@
-# Flask User Management API
+# User Management API
 
 Esta é uma API simples para gerenciamento de usuários desenvolvida usando Flask.
 
@@ -11,9 +11,7 @@ Esta é uma API simples para gerenciamento de usuários desenvolvida usando Flas
 ## Requisitos
 
 - Python
-- Flask
-- Flask-JWT-Extended
-- Flask-SQLAlchemy
+- Docker
 
 ## Instalação e Execução
 
@@ -33,12 +31,21 @@ Siga as instruções para a instalação da API na sua máquina. Rode os seguint
 
 3. Execução da API:
  
-    ```bash
+   ```bash
    python3 -m flask --app check1 run
-    ```
+   ```
 
+A aplicação estará disponível em http://localhost:5000
 
-A aplicação estará disponível em [http://localhost:5000](http://localhost:5000).
+## Execução utilizando Docker
+
+Para executar a aplicação utilizando o Docker, rode o seguinte comando no diretório `Modulo10/pond1`:
+   
+   ```bash
+   sudo docker compose up
+   ```
+
+As API síncrona estará disponível em http://localhost:5000 enquanto a assíncrona em http://localhost:5001
 
 ## Documentação da API
 
@@ -46,6 +53,6 @@ A documentação da API pode ser encontrada [aqui](./swagger.yaml). Esta documen
 
 ## Testes de Rotas
 
-Você pode interagir com a API usando qualquer cliente HTTP ou ferramenta de desenvolvimento de API. Aqui está um exemplo usando o insomnia para obter todos os usuários:
+Você pode interagir com a API usando qualquer cliente HTTP ou ferramenta de desenvolvimento de API. Aqui está um [exemplo](Insomnia.yaml) usando o insomnia para obter todos os usuários:
 
 ![insomnia](./imgs/InsomniaRoutes.png)

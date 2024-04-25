@@ -1,4 +1,5 @@
 import requests as http_request
+import asyncio
 from flask import make_response
 from flask import Flask
 from database.database import db
@@ -34,7 +35,7 @@ if len(sys.argv) > 1 and sys.argv[1] == 'create_db':
 from flask_jwt_extended import create_access_token
 from flask_jwt_extended import jwt_required, get_jwt_identity
 @app.route("/token", methods=["POST"])
-def create_token():
+async def create_token():
     username = request.json.get("username", None)
     password = request.json.get("password", None)
     # Query your database for username and password

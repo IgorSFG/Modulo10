@@ -10,7 +10,7 @@ git clone https://github.com/IgorSFG/Modulo10.git
 ## Atividades
 As atividades ponderadas podem ser encontradas a seguir.
 
-### [POND1: Flask User Management API](https://github.com/IgorSFG/Modulo10/tree/main/pond1)
+### [POND1: User Management API](https://github.com/IgorSFG/Modulo10/tree/main/pond1)
 
 ## Testes
 As provas podem ser encontradas a seguir.
