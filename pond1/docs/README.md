@@ -28,13 +28,13 @@ Siga as instruções para a instalação da API na sua máquina. Rode os seguint
 2. Criação do Banco de Dados:
 
    ```bash
-   python3 main.py create_db
+   python3 check1.py create_db
    ```
 
 3. Execução da API:
  
     ```bash
-   python3 -m flask --app main run
+   python3 -m flask --app check1 run
     ```
 
 
