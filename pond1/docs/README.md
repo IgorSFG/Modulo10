@@ -56,3 +56,13 @@ A documentação da API pode ser encontrada [aqui](./swagger.yaml). Esta documen
 Você pode interagir com a API usando qualquer cliente HTTP ou ferramenta de desenvolvimento de API. Aqui está um [exemplo](Insomnia.yaml) usando o insomnia para obter todos os usuários:
 
 ![insomnia](./imgs/InsomniaRoutes.png)
+
+## Testes de carga
+
+Você pode realizar testes de carga na API para avaliar seu desempenho e capacidade de lidar com um grande volume de solicitações. Abaixo está um [exemplo](Insomnia.yaml) usando o insomnia, obtendo todos os usuários:
+
+### Teste de carga na API Síncrona
+![insomnia sincrona](./imgs/InsomniaSync.png)
+
+### Teste de carga na API Assíncrona
+![insomnia assincrona](./imgs/InsomniaAsync.png)

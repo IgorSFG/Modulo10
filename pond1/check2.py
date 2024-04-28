@@ -1,5 +1,4 @@
 import requests as http_request
-import asyncio
 from flask import make_response
 from flask import Flask
 from database.database import db
@@ -28,7 +27,6 @@ if len(sys.argv) > 1 and sys.argv[1] == 'create_db':
     # Finaliza a execução do programa
     print("Database created successfully")
     sys.exit(0)
-
 
 
 # Método para criar um token
@@ -105,7 +103,7 @@ async def login():
         # the user was not found on the database
         return render_template("error.html", message="Bad username or password")
     # faz uma chamada para a criação do token
-    token_data = http_request.post("http://localhost:5000/token", json={"username": username, "password": password})
+    token_data = http_request.post("http://localhost:5001/token", json={"username": username, "password": password})
     if token_data.status_code != 200:
         return render_template("error.html", message="Bad username or password")
     # recupera o token
