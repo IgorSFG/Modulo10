@@ -11,6 +11,7 @@ git clone https://github.com/IgorSFG/Modulo10.git
 As atividades ponderadas podem ser encontradas a seguir.
 
 ### [POND1: User Management API](https://github.com/IgorSFG/Modulo10/tree/main/pond1)
+### [POND2: Mobile TODO](https://github.com/IgorSFG/Modulo10/tree/main/pond2)
 
 ## Testes
 As provas podem ser encontradas a seguir.
