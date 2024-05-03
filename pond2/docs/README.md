@@ -23,13 +23,19 @@ Antes de começar a usar esta aplicação, verifique se o seguinte software est�
 source .bashrc
 ```
 
-2. Navegue até o diretório do projeto:
+2. Caso tenha um emulador para testar a aplicação, rode o comando:
+
+```bash
+flutter emulators --launch <device_name>
+```
+
+3. Navegue até o diretório do projeto:
 
 ```bash
 cd todos_mobiles
 ```
 
-3. Execute a aplicação:
+4. Execute a aplicação:
 
 ```bash
 flutter run

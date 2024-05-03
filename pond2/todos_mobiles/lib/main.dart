@@ -21,8 +21,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-// Código anterior omitido
-
 class MinhaPrimeiraTela extends StatelessWidget {
   const MinhaPrimeiraTela({super.key});
 
@@ -36,15 +34,7 @@ class MinhaPrimeiraTela extends StatelessWidget {
         children:  <Widget>[
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Image.network('https://images.pexels.com/photos/8364804/pexels-photo-8364804.jpeg',
-              width: 300,
-              height: 300,
-              fit: BoxFit.cover,
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Image.asset('assets/cao.jpg',
+            child: Image.asset('assets/i-hate-water.gif',
               width: 300,
               height: 300,
               fit: BoxFit.cover,
@@ -53,7 +43,7 @@ class MinhaPrimeiraTela extends StatelessWidget {
           ElevatedButton(onPressed: 
           (){
             Navigator.push(context, MaterialPageRoute(builder: (context) => const MinhaSegundaTela()));
-          }, child: Text("Mudar de Tela")),
+          }, child: const Text("Mudar de Tela")),
         ],
       )
     );
