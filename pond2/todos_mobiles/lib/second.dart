@@ -1,6 +1,10 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:todos_mobiles/services/notifi.dart';
+
+const String apiUrl = 'http://localhost:5000';
+const String usersUrl = '$apiUrl/users';
 
 class MinhaSegundaTela extends StatefulWidget {
   const MinhaSegundaTela({super.key});
@@ -10,7 +14,7 @@ class MinhaSegundaTela extends StatefulWidget {
 }
 
 class _MinhaSegundaTelaState extends State<MinhaSegundaTela> {
- @override
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'User Management',
@@ -31,8 +35,8 @@ class _UserListPageState extends State<UserListPage> {
   List<User> _users = [];
 
   Future<void> _fetchUsers() async {
-    final response = await http.get(Uri.parse('http://localhost:5000/users'));
-    if (response.statusCode == 200) {
+    final response = await http.get(Uri.parse(usersUrl));
+    if (response.statusCode >= 200 && response.statusCode < 300) {
       final List<dynamic> data = jsonDecode(response.body);
       setState(() {
         _users = data.map((userJson) => User.fromJson(userJson)).toList();
@@ -54,18 +58,30 @@ class _UserListPageState extends State<UserListPage> {
       appBar: AppBar(
         title: Text('User List'),
       ),
-      body: ListView.builder(
+      body: 
+      ListView.builder(
         itemCount: _users.length,
         itemBuilder: (context, index) {
           final user = _users[index];
           return ListTile(
             title: Text(user.name),
             subtitle: Text(user.email),
-            trailing: IconButton(
-              icon: Icon(Icons.delete),
-              onPressed: () {
-                _deleteUser(user.id);
-              },
+            trailing: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                IconButton(
+                  icon: Icon(Icons.edit),
+                  onPressed: () {
+                    _updateUser(user);
+                  },
+                ),
+                IconButton(
+                  icon: Icon(Icons.delete),
+                  onPressed: () {
+                    _deleteUser(user);
+                  },
+                ),
+              ],
             ),
           );
         },
@@ -78,7 +94,7 @@ class _UserListPageState extends State<UserListPage> {
             MaterialPageRoute(builder: (context) => AddUserPage()),
           ).then((value) {
             if (value == true) {
-              _fetchUsers(); // Refresh user list after adding new user
+              _fetchUsers();
             }
           });
         },
@@ -87,12 +103,106 @@ class _UserListPageState extends State<UserListPage> {
     );
   }
 
-  Future<void> _deleteUser(int userId) async {
-    final response = await http.delete(Uri.parse('http://localhost:5000/users/$userId'));
-    if (response.statusCode == 200) {
-      _fetchUsers(); // Refresh user list after deleting user
+  Future<void> _updateUser(User user) async {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => UpdateUserPage(user: user)),
+    ).then((value) {
+      if (value == true) {
+        _fetchUsers(); // Refresh user list after updating user
+      }
+    });
+  }
+
+  Future<void> _deleteUser(User user) async {
+    final response = await http.delete(Uri.parse('$usersUrl/${user.id}'));
+    if (response.statusCode >= 200 && response.statusCode < 300) {
+      _fetchUsers();
+      NotificationService().showNotification(
+        title: 'User Deleted',
+        body: '${user.name} has been deleted',
+      );
     } else {
       throw Exception('Failed to delete user');
+    }
+  }
+}
+
+class UpdateUserPage extends StatefulWidget {
+  final User user;
+
+  const UpdateUserPage({required this.user});
+
+  @override
+  _UpdateUserPageState createState() => _UpdateUserPageState();
+}
+
+class _UpdateUserPageState extends State<UpdateUserPage> {
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Update ${widget.user.name}'),
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            TextField(
+              controller: _nameController,
+              decoration: InputDecoration(labelText: 'Name'),
+            ),
+            SizedBox(height: 16.0),
+            TextField(
+              controller: _emailController,
+              decoration: InputDecoration(labelText: 'Email'),
+            ),
+            SizedBox(height: 16.0),
+            TextField(
+              controller: _passwordController,
+              decoration: InputDecoration(labelText: 'Password'),
+            ),
+            SizedBox(height: 16.0),
+            ElevatedButton(
+              onPressed: () {
+                _updateUser();
+              },
+              child: Text('Update User'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Future<void> _updateUser() async {
+    String name = _nameController.text;
+    String email = _emailController.text;
+    String password = _passwordController.text;
+
+    if (name.isEmpty) name = widget.user.name;
+    if (email.isEmpty) email = widget.user.email;
+    if (password.isEmpty) password = widget.user.password;
+    
+    final response = await http.put(
+      Uri.parse('$usersUrl/${widget.user.id}'),
+      body: jsonEncode({'name': name, 'email': email, 'password': password}),
+      headers: {'Content-Type': 'application/json'},
+    );
+
+    if (response.statusCode >= 200 && response.statusCode < 300) {
+      Navigator.pop(context, true);
+      NotificationService().showNotification(
+        title: 'User Updated',
+        body: '$name has been updated',
+      );
+    } else {
+      throw Exception('Failed to update user');
     }
   }
 }
@@ -105,23 +215,7 @@ class AddUserPage extends StatefulWidget {
 class _AddUserPageState extends State<AddUserPage> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
-
-  Future<void> _addUser() async {
-    final String name = _nameController.text;
-    final String email = _emailController.text;
-
-    final response = await http.post(
-      Uri.parse('http://localhost:5000/users'),
-      body: jsonEncode({'name': name, 'email': email}),
-      headers: {'Content-Type': 'application/json'},
-    );
-
-    if (response.statusCode == 201) {
-      Navigator.pop(context, true); // Navigate back to previous page with result
-    } else {
-      throw Exception('Failed to add user');
-    }
-  }
+  final TextEditingController _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -144,8 +238,15 @@ class _AddUserPageState extends State<AddUserPage> {
               decoration: InputDecoration(labelText: 'Email'),
             ),
             SizedBox(height: 16.0),
+            TextField(
+              controller: _passwordController,
+              decoration: InputDecoration(labelText: 'Password'),
+            ),
+            SizedBox(height: 16.0),
             ElevatedButton(
-              onPressed: _addUser,
+              onPressed: () {
+                _addUser();
+              },
               child: Text('Add User'),
             ),
           ],
@@ -153,20 +254,49 @@ class _AddUserPageState extends State<AddUserPage> {
       ),
     );
   }
+
+  Future<void> _addUser() async {
+    final String name = _nameController.text;
+    final String email = _emailController.text;
+    final String password = _passwordController.text;
+
+    final response = await http.post(
+      Uri.parse(usersUrl),
+      body: jsonEncode({'name': name, 'email': email, 'password': password}),
+      headers: {'Content-Type': 'application/json'},
+    );
+
+    if (response.statusCode >= 200 && response.statusCode < 300) {
+      Navigator.pop(context, true);
+      NotificationService().showNotification(
+        title: 'User Added',
+        body: '$name has been added',
+      );
+    } else {
+      throw Exception('Failed to add user');
+    }
+  }
 }
 
 class User {
   final int id;
   final String name;
   final String email;
+  final String password;
 
-  User({required this.id, required this.name, required this.email});
+  User({
+    required this.id,
+    required this.name,
+    required this.email,
+    required this.password,
+  });
 
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
       id: json['id'],
       name: json['name'],
       email: json['email'],
+      password: json['password'],
     );
   }
 }

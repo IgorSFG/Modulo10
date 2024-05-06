@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:todos_mobiles/second.dart';
+import 'package:todos_mobiles/services/notifi.dart';
 
 void main() {
+  NotificationService().initNotification();
   runApp(const MyApp());
 }
 
