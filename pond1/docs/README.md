@@ -45,7 +45,7 @@ Para executar a aplicação utilizando o Docker, rode o seguinte comando no dire
    sudo docker compose up
    ```
 
-As API síncrona estará disponível em http://localhost:5000 enquanto a assíncrona em http://localhost:5001
+A API síncrona estará disponível em http://localhost:5000 enquanto a assíncrona em http://localhost:5001
 
 ## Documentação da API
 
