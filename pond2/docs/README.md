@@ -11,7 +11,7 @@ Antes de começar a usar esta aplicação, verifique se o seguinte software est�
 
 ## Configuração
 
-1. Altere o path do arquivo `.bashrc` com a localização do seu Flutter. Assim, você conseguira acessá-lo rodando o seguinte comando:
+1. Altere o path do arquivo `.bashrc` com a localização do seu Flutter para conseguir acessá-lo rodando o seguinte comando:
 
 ```bash
 source .bashrc
@@ -23,18 +23,25 @@ source .bashrc
 flutter emulators --launch <device_name>
 ```
 
+3. Para usar as funcionalidades do app, primeiro é necessário ativar a [User Management API](https://github.com/IgorSFG/Modulo10/tree/main/pond1)
+
 ## Execução da Aplicação
 
-3. Navegue até o diretório do projeto:
+1. Navegue até o diretório do projeto:
 
 ```bash
 cd todos_mobiles
 ```
 
-4. Execute a aplicação:
+2. Execute a aplicação:
 
 ```bash
 flutter run
 ```
 
-Isso iniciará a aplicação no seu dispositivo móvel ou emulador.
+Isso iniciará a aplicação na sua máquina, dispositivo móvel ou emulador.
+
+## User Management APP em Ação!
+
+Você pode conferir um vídeo do funcionamento do aplicativo clicando no link a seguir:
+
