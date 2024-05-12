@@ -11,19 +11,19 @@ Antes de começar a usar esta aplicação, verifique se o seguinte software est�
 
 ## Configuração
 
-1. Altere o path do arquivo `.bashrc` com a localização do seu Flutter para conseguir acessá-lo rodando o seguinte comando:
+1. Para usar as funcionalidades do app, primeiro é necessário ativar a [User Management API](https://github.com/IgorSFG/Modulo10/tree/main/pond1)
+
+2. Altere o path do arquivo `.bashrc` com a localização do seu Flutter para conseguir acessá-lo rodando o seguinte comando:
 
 ```bash
 source .bashrc
 ```
 
-2. Caso tenha um emulador para testar a aplicação, rode o comando:
+3. Caso tenha um emulador para testar a aplicação, rode o comando:
 
 ```bash
 flutter emulators --launch <device_name>
 ```
-
-3. Para usar as funcionalidades do app, primeiro é necessário ativar a [User Management API](https://github.com/IgorSFG/Modulo10/tree/main/pond1)
 
 ## Execução da Aplicação
 
@@ -45,3 +45,4 @@ Isso iniciará a aplicação na sua máquina, dispositivo móvel ou emulador.
 
 Você pode conferir um vídeo do funcionamento do aplicativo clicando no link a seguir:
 
+https://drive.google.com/file/d/1MfjnR8Ee7TkG6kMrRwwMkuIJwGRXN6-x/view?usp=sharing
