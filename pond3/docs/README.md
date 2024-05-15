@@ -1,6 +1,6 @@
-# User Management APP
+# IMG Processor
 
-Esta é uma aplicação simples de gerenciamento de usuários desenvolvida em Flutter para dispositivos móveis. Com esta aplicação, o administrador pode facilmente adicionar, remover e atualizar usuários.
+Esta é uma aplicação de processamento de imagens em Flutter para dispositivos móveis.
 
 ## Pré-requisitos
 
@@ -30,7 +30,7 @@ flutter emulators --launch <device_name>
 1. Navegue até o diretório do projeto:
 
 ```bash
-cd todos_mobiles
+cd img_processor
 ```
 
 2. Execute a aplicação:
@@ -41,8 +41,6 @@ flutter run
 
 Isso iniciará a aplicação na sua máquina, dispositivo móvel ou emulador.
 
-## User Management APP em Ação!
+## IMG Processor em Ação!
 
 Você pode conferir um vídeo do funcionamento do aplicativo clicando no link a seguir:
-
-https://drive.google.com/file/d/1MfjnR8Ee7TkG6kMrRwwMkuIJwGRXN6-x/view?usp=sharing

@@ -1,43 +1,23 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:img_processor/register.dart';
 import 'package:img_processor/services/notifi.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'dart:convert';
 
-Future<void> main() async {
-  await dotenv.load(fileName: ".env");
-  NotificationService().initNotification();
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
+class RegisterPage extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: LoginPage(),
-    );
-  }
+  _RegisterPageState createState() => _RegisterPageState();
 }
 
-class LoginPage extends StatefulWidget {
-  @override
-  _LoginPageState createState() => _LoginPageState();
-}
-
-class _LoginPageState extends State<LoginPage> {
+class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _emailController    = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   bool _isLoading = false;
   String _errorMessage = '';
 
-  Future<void> _login() async {
+  Future<void> _register() async {
     setState(() {
       _isLoading = true;
       _errorMessage = '';
@@ -45,9 +25,10 @@ class _LoginPageState extends State<LoginPage> {
 
     try {
       final response = await http.post(
-        Uri.parse('${dotenv.env['API_URL']}/login'),
+        Uri.parse('${dotenv.env['API_URL']}/users'),
         body: jsonEncode({
           'username': _usernameController.text,
+          'email'   : _emailController.text,
           'password': _passwordController.text,
         }),
         headers: {'Content-Type': 'application/json'},
@@ -59,24 +40,23 @@ class _LoginPageState extends State<LoginPage> {
 
       if (response.statusCode >= 200 && response.statusCode < 300) {
         final data = jsonDecode(response.body);
-        print('Login successful: $data');
+        print('Register successful: $data');
         NotificationService().showNotification(
-          title: 'Login Successful',
-          body: 'Welcome back, ${data['username']}!',
+          title: 'Register Successful',
+          body: 'Welcome, ${data['username']}!',
         );
         //Navigator.push(context, MaterialPageRoute(builder: (context) => const UserManagement()));
       } else {
-        // Handle login error
         setState(() {
-          _errorMessage = 'Invalid username or password';
+          _errorMessage = 'Failed to register';
         });
       }
     
     } on Exception catch (e) {
-        print('Failed to login: $e');
+        print('Failed to register: $e');
         setState(() {
           _isLoading = false;
-          _errorMessage = 'Failed to login';
+          _errorMessage = 'Failed to register';
         });
     }
   }
@@ -84,7 +64,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Login')),
+      appBar: AppBar(title: Text('Sign Up')),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -92,7 +72,7 @@ class _LoginPageState extends State<LoginPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Text(
-                'Welcome Back!',
+                'Register!',
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 20),
@@ -102,6 +82,15 @@ class _LoginPageState extends State<LoginPage> {
                   labelText: 'Username',
                   border: OutlineInputBorder(),
                   prefixIcon: Icon(Icons.person),
+                ),
+              ),
+              SizedBox(height: 20),
+              TextField(
+                controller: _emailController,
+                decoration: InputDecoration(
+                  labelText: 'Email',
+                  border: OutlineInputBorder(),
+                  prefixIcon: Icon(Icons.email),
                 ),
               ),
               SizedBox(height: 20),
@@ -118,8 +107,8 @@ class _LoginPageState extends State<LoginPage> {
               _isLoading
                   ? CircularProgressIndicator()
                   : ElevatedButton(
-                      onPressed: _login,
-                      child: Text('Login'),
+                      onPressed: _register,
+                      child: Text('Sign Up'),
                     ),
               SizedBox(height: 20),
               _errorMessage.isNotEmpty
@@ -131,10 +120,10 @@ class _LoginPageState extends State<LoginPage> {
               SizedBox(height: 20),
               GestureDetector(
                 onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterPage()));
+                  Navigator.pop(context);
                 },
                 child: Text(
-                  'Don\'t have an account? Register here',
+                  'Already have an account? Login here',
                   style: TextStyle(
                     decoration: TextDecoration.underline,
                     color: Colors.blue,
