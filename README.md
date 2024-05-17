@@ -17,6 +17,6 @@ As atividades ponderadas podem ser encontradas a seguir.
 ## Testes
 As provas podem ser encontradas a seguir.
 
-### [PROVA1](https://github.com/IgorSFG/Modulo9/tree/main/test1)
-### [PROVA2](https://github.com/IgorSFG/Modulo9/tree/main/test2)
+### [PROVA1](https://github.com/IgorSFG/Modulo10/tree/main/test1)
+### [PROVA2](https://github.com/IgorSFG/Modulo10/tree/main/test2)
 
