@@ -1,0 +1,150 @@
+_type: export
+__export_format: 4
+__export_date: 2024-05-17T13:25:08.148Z
+__export_source: insomnia.desktop.app:v8.6.1
+resources:
+  - _id: req_b7a4cfbed66b45e5b8486e217950e997
+    parentId: wrk_54c23cd7eaab4d5c9322ee75c7a6e8f4
+    modified: 1715951941017
+    created: 1715951205542
+    url: "{{ _.urlNovo }}"
+    name: Novo
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+              "name": "Qua",
+        			"email": "Qua@mail.com",
+              "description": "Quero Leg"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1715951205542
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: wrk_54c23cd7eaab4d5c9322ee75c7a6e8f4
+    parentId: null
+    modified: 1715950979688
+    created: 1715950979688
+    name: Test1Collection
+    description: ""
+    scope: collection
+    _type: workspace
+  - _id: req_ee6028fd1e79409f9ae55a28a7063cf6
+    parentId: wrk_54c23cd7eaab4d5c9322ee75c7a6e8f4
+    modified: 1715951993858
+    created: 1715951176185
+    url: "{{ _.urlPedidos }}/3"
+    name: Pedidos
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1715951176185
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_21cf607216444706849d2d67a2f44d38
+    parentId: wrk_54c23cd7eaab4d5c9322ee75c7a6e8f4
+    modified: 1715952035070
+    created: 1715951144535
+    url: "{{ _.urlPedidos }}/2"
+    name: Pedidos
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+              "name": "Atualizado",
+        			"email": "Atu@mail.com",
+              "description": "Quero Atum"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1715951144535
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_3e542d69ef4e4ed9857017aa50f072fa
+    parentId: wrk_54c23cd7eaab4d5c9322ee75c7a6e8f4
+    modified: 1715951141948
+    created: 1715950986856
+    url: "{{ _.urlPedidos }}"
+    name: Pedidos
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1715950986856
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: env_95ac2b82ac33e01f58e48771acbe6d69db898ec9
+    parentId: wrk_54c23cd7eaab4d5c9322ee75c7a6e8f4
+    modified: 1715951082342
+    created: 1715950979692
+    name: Base Environment
+    data:
+      urlNovo: http://localhost:8000/novo
+      urlPedidos: http://localhost:8000/pedidos
+    dataPropertyOrder:
+      "&":
+        - urlNovo
+        - urlPedidos
+    color: null
+    isPrivate: false
+    metaSortKey: 1715950979692
+    _type: environment
+  - _id: jar_95ac2b82ac33e01f58e48771acbe6d69db898ec9
+    parentId: wrk_54c23cd7eaab4d5c9322ee75c7a6e8f4
+    modified: 1715950979694
+    created: 1715950979694
+    name: Default Jar
+    cookies: []
+    _type: cookie_jar
