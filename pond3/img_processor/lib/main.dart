@@ -5,6 +5,7 @@ import 'package:img_processor/register.dart';
 import 'package:img_processor/services/notifi.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'dart:convert';
+import 'package:img_processor/img-processor.dart';
 
 Future<void> main() async {
   await dotenv.load(fileName: ".env");
@@ -64,7 +65,7 @@ class _LoginPageState extends State<LoginPage> {
           title: 'Login Successful',
           body: 'Welcome back, ${data['username']}!',
         );
-        //Navigator.push(context, MaterialPageRoute(builder: (context) => const UserManagement()));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => const ImgProcessor()));
       } else {
         // Handle login error
         setState(() {
@@ -77,6 +78,8 @@ class _LoginPageState extends State<LoginPage> {
         setState(() {
           _isLoading = false;
           _errorMessage = 'Failed to login';
+          // APAGAR DEPOIS
+          Navigator.push(context, MaterialPageRoute(builder: (context) => const ImgProcessor()));
         });
     }
   }

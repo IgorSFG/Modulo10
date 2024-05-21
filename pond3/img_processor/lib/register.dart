@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:img_processor/services/notifi.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'dart:convert';
+import 'package:img_processor/img-processor.dart';
 
 class RegisterPage extends StatefulWidget {
   @override
@@ -45,7 +46,7 @@ class _RegisterPageState extends State<RegisterPage> {
           title: 'Register Successful',
           body: 'Welcome, ${data['username']}!',
         );
-        //Navigator.push(context, MaterialPageRoute(builder: (context) => const UserManagement()));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => const ImgProcessor()));
       } else {
         setState(() {
           _errorMessage = 'Failed to register';
