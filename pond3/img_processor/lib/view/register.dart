@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:img_processor/services/notifi.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'dart:convert';
-import 'package:img_processor/img-processor.dart';
+import 'package:img_processor/view/img-processor.dart';
 
 class RegisterPage extends StatefulWidget {
   @override
@@ -26,7 +26,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
     try {
       final response = await http.post(
-        Uri.parse('${dotenv.env['API_URL']}/users'),
+        Uri.parse('${dotenv.env['USER_MGMT_URL']}/users'),
         body: jsonEncode({
           'username': _usernameController.text,
           'email'   : _emailController.text,
@@ -48,6 +48,7 @@ class _RegisterPageState extends State<RegisterPage> {
         );
         Navigator.push(context, MaterialPageRoute(builder: (context) => ImgProcessor()));
       } else {
+        print(response.body);
         setState(() {
           _errorMessage = 'Failed to register';
         });

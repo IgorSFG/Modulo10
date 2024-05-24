@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 import 'package:path/path.dart' as path;
 import 'package:path_provider/path_provider.dart';
@@ -33,7 +34,7 @@ class _ImgProcessorState extends State<ImgProcessor> {
       _isLoading = true;
     });
 
-    var request = http.MultipartRequest('POST', Uri.parse('http://localhost:5000/upload'));
+    var request = http.MultipartRequest('POST', Uri.parse('${dotenv.env['USER_MGMT_URL']}/users'));
     request.files.add(await http.MultipartFile.fromPath('file', _image!.path));
 
     var response = await request.send();
@@ -58,11 +59,11 @@ class _ImgProcessorState extends State<ImgProcessor> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Image Upload and Filter'),
+        title: Text('Processador de Imagens'),
         flexibleSpace: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: [Colors.blue, Colors.purple],
+              colors: [Colors.blue, Colors.green],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),
@@ -95,7 +96,7 @@ class _ImgProcessorState extends State<ImgProcessor> {
               ElevatedButton.icon(
                 onPressed: _pickImage,
                 icon: Icon(Icons.image),
-                label: Text('Pick Image'),
+                label: Text('Selecionar Imagem'),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.blue,
                   padding: EdgeInsets.symmetric(vertical: 16.0),
@@ -106,7 +107,7 @@ class _ImgProcessorState extends State<ImgProcessor> {
               ElevatedButton.icon(
                 onPressed: _uploadImage,
                 icon: Icon(Icons.upload),
-                label: _isLoading ? CircularProgressIndicator(color: Colors.white) : Text('Upload and Apply Filter'),
+                label: _isLoading ? CircularProgressIndicator(color: Colors.white) : Text('Aplicar Filtro'),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.green,
                   padding: EdgeInsets.symmetric(vertical: 16.0),

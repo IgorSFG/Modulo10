@@ -1,11 +1,11 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:img_processor/register.dart';
+import 'package:img_processor/view/register.dart';
 import 'package:img_processor/services/notifi.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'dart:convert';
-import 'package:img_processor/img-processor.dart';
+import 'package:img_processor/view/img-processor.dart';
 
 Future<void> main() async {
   await dotenv.load(fileName: ".env");
@@ -46,7 +46,7 @@ class _LoginPageState extends State<LoginPage> {
 
     try {
       final response = await http.post(
-        Uri.parse('${dotenv.env['API_URL']}/login'),
+        Uri.parse('${dotenv.env['USER_MGMT_URL']}/login'),
         body: jsonEncode({
           'username': _usernameController.text,
           'password': _passwordController.text,
@@ -70,8 +70,6 @@ class _LoginPageState extends State<LoginPage> {
         // Handle login error
         setState(() {
           _errorMessage = 'Invalid username or password';
-          // APAGAR DEPOIS
-          Navigator.push(context, MaterialPageRoute(builder: (context) => ImgProcessor()));
         });
       }
     
@@ -80,8 +78,6 @@ class _LoginPageState extends State<LoginPage> {
         setState(() {
           _isLoading = false;
           _errorMessage = 'Failed to login';
-          // APAGAR DEPOIS
-          Navigator.push(context, MaterialPageRoute(builder: (context) => ImgProcessor()));
         });
     }
   }
