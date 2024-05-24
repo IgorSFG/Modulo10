@@ -8,15 +8,22 @@ Antes de começar a usar esta aplicação, verifique se o seguinte software est�
 
 - Flutter SDK: Você pode seguir as instruções de instalação no [site oficial do Flutter](https://flutter.dev/docs/get-started/install).
 - Um dispositivo móvel ou um emulador para testar a aplicação.
+- Docker
 
 ## Configuração
 
-1. Para usar as funcionalidades do app, primeiro é necessário ativar a [User Management API](https://github.com/IgorSFG/Modulo10/tree/main/pond1)
-
-2. Altere o path do arquivo `.bashrc` com a localização do seu Flutter para conseguir acessá-lo rodando o seguinte comando:
+1. Para usar as funcionalidades do app, primeiro é necessário ativar o gateway no diretório `Modulo10/pond3/back`:
 
 ```bash
-source .bashrc
+sudo docker compose up
+```
+
+2. Crie um arquivo .env com as suas configurações no diretório `Modulo10/pond3/img_processor`:
+
+```bash
+IMG_FILTER_URL = 'http://localhost:8001/img_filter'
+LOGGER_URL     = 'http://localhost:8002/logger'
+USER_MGMT_URL  = 'http://localhost:8003/user_mgmt'
 ```
 
 3. Caso tenha um emulador para testar a aplicação, rode o comando:
