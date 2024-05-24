@@ -65,11 +65,13 @@ class _LoginPageState extends State<LoginPage> {
           title: 'Login Successful',
           body: 'Welcome back, ${data['username']}!',
         );
-        Navigator.push(context, MaterialPageRoute(builder: (context) => const ImgProcessor()));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => ImgProcessor()));
       } else {
         // Handle login error
         setState(() {
           _errorMessage = 'Invalid username or password';
+          // APAGAR DEPOIS
+          Navigator.push(context, MaterialPageRoute(builder: (context) => ImgProcessor()));
         });
       }
     
@@ -79,7 +81,7 @@ class _LoginPageState extends State<LoginPage> {
           _isLoading = false;
           _errorMessage = 'Failed to login';
           // APAGAR DEPOIS
-          Navigator.push(context, MaterialPageRoute(builder: (context) => const ImgProcessor()));
+          Navigator.push(context, MaterialPageRoute(builder: (context) => ImgProcessor()));
         });
     }
   }

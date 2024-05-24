@@ -46,7 +46,7 @@ class _RegisterPageState extends State<RegisterPage> {
           title: 'Register Successful',
           body: 'Welcome, ${data['username']}!',
         );
-        Navigator.push(context, MaterialPageRoute(builder: (context) => const ImgProcessor()));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => ImgProcessor()));
       } else {
         setState(() {
           _errorMessage = 'Failed to register';
