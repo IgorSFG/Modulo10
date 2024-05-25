@@ -25,8 +25,11 @@ class _RegisterPageState extends State<RegisterPage> {
     });
 
     try {
+      final String? url = dotenv.env['URL'];
+      final String? user_mgmt = dotenv.env['USER_MGMT'];
+
       final response = await http.post(
-        Uri.parse('${dotenv.env['USER_MGMT_URL']}/users'),
+        Uri.parse('$url/$user_mgmt/users'),
         body: jsonEncode({
           'username': _usernameController.text,
           'email'   : _emailController.text,
@@ -42,11 +45,12 @@ class _RegisterPageState extends State<RegisterPage> {
       if (response.statusCode >= 200 && response.statusCode < 300) {
         final data = jsonDecode(response.body);
         print('Register successful: $data');
+        final String? username = data['username'];
         NotificationService().showNotification(
           title: 'Register Successful',
-          body: 'Welcome, ${data['username']}!',
+          body: 'Welcome, $username!',
         );
-        Navigator.push(context, MaterialPageRoute(builder: (context) => ImgProcessor()));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => ImgProcessor(username: username,)));
       } else {
         print(response.body);
         setState(() {

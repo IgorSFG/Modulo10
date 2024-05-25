@@ -7,11 +7,17 @@ import 'package:path/path.dart' as path;
 import 'package:path_provider/path_provider.dart';
 
 class ImgProcessor extends StatefulWidget {
+  final String? username;
+
+  ImgProcessor({required this.username});
+
   @override
-  _ImgProcessorState createState() => _ImgProcessorState();
+  _ImgProcessorState createState() => _ImgProcessorState(username);
 }
 
 class _ImgProcessorState extends State<ImgProcessor> {
+  final String? username;
+  _ImgProcessorState(this.username);
   File? _image;
   File? _filteredImage;
   bool _isLoading = false;
@@ -34,7 +40,10 @@ class _ImgProcessorState extends State<ImgProcessor> {
       _isLoading = true;
     });
 
-    var request = http.MultipartRequest('POST', Uri.parse('${dotenv.env['USER_MGMT_URL']}/users'));
+    final String? url = dotenv.env['URL'];
+    final String? img_filter = dotenv.env['IMG_FILTER'];
+
+    var request = http.MultipartRequest('POST', Uri.parse('$url/$img_filter/upload'));
     request.files.add(await http.MultipartFile.fromPath('file', _image!.path));
 
     var response = await request.send();

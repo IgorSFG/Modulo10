@@ -45,8 +45,11 @@ class _LoginPageState extends State<LoginPage> {
     });
 
     try {
+      final String? url = dotenv.env['URL'];
+      final String? user_mgmt = dotenv.env['USER_MGMT'];
+
       final response = await http.post(
-        Uri.parse('${dotenv.env['USER_MGMT_URL']}/login'),
+        Uri.parse('$url/$user_mgmt/login'),
         body: jsonEncode({
           'username': _usernameController.text,
           'password': _passwordController.text,
@@ -61,11 +64,12 @@ class _LoginPageState extends State<LoginPage> {
       if (response.statusCode >= 200 && response.statusCode < 300) {
         final data = jsonDecode(response.body);
         print('Login successful: $data');
+        final String? username = data['username'];
         NotificationService().showNotification(
           title: 'Login Successful',
-          body: 'Welcome back, ${data['username']}!',
+          body: 'Welcome back, $username!',
         );
-        Navigator.push(context, MaterialPageRoute(builder: (context) => ImgProcessor()));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => ImgProcessor(username: username,)));
       } else {
         // Handle login error
         setState(() {

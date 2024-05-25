@@ -10,7 +10,9 @@ formatter = logging.Formatter('%(asctime)s - %(message)s')
 handler.setFormatter(formatter)
 app.logger.addHandler(handler)
 
-@app.route('/log', methods=['POST'])
+prefix = '/logger/'
+
+@app.route(f"{prefix}log", methods=['POST'])
 def log_event():
     data = request.get_json()    
     if not data:
