@@ -43,6 +43,12 @@ async def create_token():
     access_token = create_access_token(identity=user.id)
     return jsonify({ "token": access_token, "user_id": user.id, "username": user.username})
 
+@app.route(f"{prefix}protected", methods=["GET"])
+@jwt_required()
+async def protected():
+    current_user = get_jwt_identity()
+    return jsonify(logged_in_as=current_user), 200
+
 @app.route(f"{prefix}")
 async def hello_world():
     return "<p>Hello, World!</p>"

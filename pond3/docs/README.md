@@ -1,4 +1,4 @@
-# IMG Processor
+# IMG Processor APPI
 
 Esta é uma aplicação de processamento de imagens em Flutter para dispositivos móveis.
 
@@ -18,12 +18,13 @@ Antes de começar a usar esta aplicação, verifique se o seguinte software est�
 sudo docker compose up
 ```
 
-2. Crie um arquivo .env com as suas configurações no diretório `Modulo10/pond3/img_processor`:
+2. Crie um arquivo .env no diretório `Modulo10/pond3/img_processor`:
 
 ```bash
-IMG_FILTER_URL = 'http://localhost:8001/img_filter'
-LOGGER_URL     = 'http://localhost:8002/logger'
-USER_MGMT_URL  = 'http://localhost:8003/user_mgmt'
+URL        = 'http://<ip-gateway>:8000'
+IMG_FILTER = 'img_filter'
+LOGGER     = 'logger'
+USER_MGMT  = 'user_mgmt'
 ```
 
 3. Caso tenha um emulador para testar a aplicação, rode o comando:
@@ -34,13 +35,7 @@ flutter emulators --launch <device_name>
 
 ## Execução da Aplicação
 
-1. Navegue até o diretório do projeto:
-
-```bash
-cd img_processor
-```
-
-2. Execute a aplicação:
+Execute a aplicação no diretório `Modulo10/pond3/img_processor` com o comando:
 
 ```bash
 flutter run
@@ -48,6 +43,6 @@ flutter run
 
 Isso iniciará a aplicação na sua máquina, dispositivo móvel ou emulador.
 
-## IMG Processor em Ação!
+## IMG Processor APPI em Ação!
 
 Você pode conferir um vídeo do funcionamento do aplicativo clicando no link a seguir:

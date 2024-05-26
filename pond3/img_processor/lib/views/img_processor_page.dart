@@ -1,67 +1,43 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:http/http.dart' as http;
-import 'package:path/path.dart' as path;
-import 'package:path_provider/path_provider.dart';
+import 'package:img_processor/controllers/img_processor_controller.dart';
 
-class ImgProcessor extends StatefulWidget {
+class ImgProcessorPage extends StatefulWidget {
   final String? username;
+  final String? email;
 
-  ImgProcessor({required this.username});
+  ImgProcessorPage({this.username, this.email});
 
   @override
-  _ImgProcessorState createState() => _ImgProcessorState(username);
+  _ImgProcessorPageState createState() => _ImgProcessorPageState(username, email);
 }
 
-class _ImgProcessorState extends State<ImgProcessor> {
+class _ImgProcessorPageState extends State<ImgProcessorPage> {
   final String? username;
-  _ImgProcessorState(this.username);
+  final String? email;
+  final ImgProcessorController _imgProcessorController = ImgProcessorController();
   File? _image;
   File? _filteredImage;
   bool _isLoading = false;
-  final ImagePicker _picker = ImagePicker();
 
-  Future<void> _pickImage() async {
-    final pickedFile = await _picker.pickImage(source: ImageSource.gallery);
-    if (pickedFile != null) {
-      setState(() {
-        _image = File(pickedFile.path);
-        _filteredImage = null; // Reset the filtered image when a new image is picked
-      });
-    }
+  _ImgProcessorPageState(this.username, this.email);
+
+  void _setImage(File? image) {
+    setState(() {
+      _image = image;
+    });
   }
 
-  Future<void> _uploadImage() async {
-    if (_image == null) return;
-
+  void _setFilteredImage(File? filteredImage) {
     setState(() {
-      _isLoading = true;
+      _filteredImage = filteredImage;
     });
+  }
 
-    final String? url = dotenv.env['URL'];
-    final String? img_filter = dotenv.env['IMG_FILTER'];
-
-    var request = http.MultipartRequest('POST', Uri.parse('$url/$img_filter/upload'));
-    request.files.add(await http.MultipartFile.fromPath('file', _image!.path));
-
-    var response = await request.send();
-    if (response.statusCode == 200) {
-      var responseData = await response.stream.toBytes();
-      var tempDir = await getTemporaryDirectory();
-      var filePath = path.join(tempDir.path, 'filtered_image.jpg');
-      File file = File(filePath);
-      await file.writeAsBytes(responseData);
-      setState(() {
-        _filteredImage = file;
-        _isLoading = false;
-      });
-    } else {
-      setState(() {
-        _isLoading = false;
-      });
-    }
+  void _setLoading(bool isLoading) {
+    setState(() {
+      _isLoading = isLoading;
+    });
   }
 
   @override
@@ -103,7 +79,14 @@ class _ImgProcessorState extends State<ImgProcessor> {
                 ),
               SizedBox(height: 20),
               ElevatedButton.icon(
-                onPressed: _pickImage,
+                onPressed: () {
+                  _imgProcessorController.pickImage(
+                    username,
+                    email,
+                    _setImage,
+                    _setFilteredImage,
+                  );
+                },
                 icon: Icon(Icons.image),
                 label: Text('Selecionar Imagem'),
                 style: ElevatedButton.styleFrom(
@@ -114,7 +97,15 @@ class _ImgProcessorState extends State<ImgProcessor> {
               ),
               SizedBox(height: 10),
               ElevatedButton.icon(
-                onPressed: _uploadImage,
+                onPressed: () {
+                  _imgProcessorController.uploadImage(
+                    username,
+                    email,
+                    _image,
+                    _setLoading,
+                    _setFilteredImage,
+                  );
+                },
                 icon: Icon(Icons.upload),
                 label: _isLoading ? CircularProgressIndicator(color: Colors.white) : Text('Aplicar Filtro'),
                 style: ElevatedButton.styleFrom(
