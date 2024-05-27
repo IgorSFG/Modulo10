@@ -17,6 +17,14 @@ class NotificationService {
     );
   }
 
+  static void allowed() {
+    AwesomeNotifications().isNotificationAllowed().then((isAllowed) {
+      if (!isAllowed) {
+        AwesomeNotifications().requestPermissionToSendNotifications();
+      }
+    });
+  }
+
   static void showNotification(String title, String body) {
     AwesomeNotifications().createNotification(
       content: NotificationContent(
