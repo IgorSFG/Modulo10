@@ -6,7 +6,7 @@ class NotificationService {
 
   Future<void> initNotification() async {
     AndroidInitializationSettings initializationSettingsAndroid =
-        const AndroidInitializationSettings('@mipmap/Autobots-Logo');
+        const AndroidInitializationSettings('@mipmap/autobots');
 
     var initializationSettingsIOS = DarwinInitializationSettings(
         requestAlertPermission: true,
@@ -34,7 +34,7 @@ class NotificationService {
   notificationDetails() {
     return const NotificationDetails(
         android: AndroidNotificationDetails('channelId', 'channelName',
-            icon: "@mipmap/Autobots-Logo",
+            icon: "@mipmap/autobots",
             importance: Importance.max),
         iOS: DarwinNotificationDetails());
   }
