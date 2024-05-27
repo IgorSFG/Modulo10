@@ -37,10 +37,7 @@ class LoginController {
         final String? username = data['username'];
         final String? email = data['email'];
 
-        NotificationService().showNotification(
-          title: 'Login Successful',
-          body: 'Welcome back, $username!',
-        );
+        NotificationService.showNotification('Login Successful', 'Welcome back, $username!');
 
         final String? logger = dotenv.env['LOGGER'];
         await http.post(

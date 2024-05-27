@@ -6,7 +6,7 @@ import 'package:img_processor/services/notifi.dart';
 
 Future<void> main() async {
   await dotenv.load(fileName: ".env");
-  NotificationService().initNotification();
+  NotificationService.init();
   runApp(MyApp());
 }
 

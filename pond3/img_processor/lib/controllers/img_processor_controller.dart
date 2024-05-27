@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:img_processor/services/notifi.dart';
 import 'package:path/path.dart' as path;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
@@ -32,6 +33,8 @@ class ImgProcessorController {
         }),
         headers: {'Content-Type': 'application/json'},
       );
+
+      NotificationService.showNotification('Image Picked', 'Image has been picked');
     }
   }
 
@@ -73,6 +76,8 @@ class ImgProcessorController {
         }),
         headers: {'Content-Type': 'application/json'},
       );
+
+      NotificationService.showNotification('Image Filtered', 'Image has been filtered');
     } else {
       setLoading(false);
     }

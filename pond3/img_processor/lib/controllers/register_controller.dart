@@ -52,10 +52,7 @@ class RegisterController {
           headers: {'Content-Type': 'application/json'},
         );
         
-        NotificationService().showNotification(
-          title: 'Register Successful',
-          body: 'Welcome, $username!',
-        );
+        NotificationService.showNotification('Register Successful', 'Welcome, $username!');
 
         Navigator.pop(context);
       } else {
