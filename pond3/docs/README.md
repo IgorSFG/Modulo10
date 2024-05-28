@@ -47,8 +47,10 @@ Isso iniciará a aplicação na sua máquina, dispositivo móvel ou emulador.
 
 ### Vídeo
 Você pode conferir um vídeo do funcionamento do aplicativo clicando no link a seguir:
-![video-app](./assets/app-video.webm)
+
+https://drive.google.com/file/d/1uABMTj8Y2W9xp4euzUuzdf8D0QgvXkM-/view?usp=sharing
 
 ### Log
 Você pode conferir uma imagem do log de um login a seguir:
-![img-login-log](./assets/login-log.png)
+
+![img-login-log](./imgs/login-log.png)
