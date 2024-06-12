@@ -9,7 +9,10 @@ import logging
 
 LOGGER = logging.getLogger(__name__)
 
-router = APIRouter()
+router = APIRouter(
+    prefix="userProducts",
+    tags=["userProducts", "produtos"]
+)
 
 @router.get("/produtos/{produto_id}")
 async def get_produto(produto_id: int, db: Session = Depends(database.get_db)):

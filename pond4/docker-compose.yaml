@@ -12,7 +12,7 @@ services:
   ordersClient:
     build: ./ordersClient/
     ports:
-      - "9000:90"
+      - "8100:81"
     container_name: ordersClient
     volumes:
       - ./logs:/app/logs
@@ -47,7 +47,9 @@ services:
     build: ./gateway/
     container_name: gateway
     ports:
-      - "5000:50"
+      - "3000:30"
+    volumes:
+      - ./logs:/var/log/nginx
 
 volumes:
     elasticsearch_data:

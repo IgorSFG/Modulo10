@@ -10,7 +10,10 @@ import logging
 #Cria o logger para o módulo
 LOGGER = logging.getLogger(__name__)
 
-router = APIRouter()
+router = APIRouter(
+    prefix= "userProducts",
+    tags=["userProducts", "usuarios"]
+)
 
 @router.get("/usuarios/{usuario_id}")
 async def get_usuario(usuario_id: int, db: Session = Depends(database.get_db)):

@@ -9,7 +9,10 @@ import logging
 
 LOGGER = logging.getLogger(__name__)
 
-router = APIRouter()
+router = APIRouter(
+    prefix="ordersClient",
+    tags=["ordersClient"],
+)
 
 @router.get("/orders/{ordem_id}")
 async def get_ordem(ordem_id: int, db: Session = Depends(database.get_db)):

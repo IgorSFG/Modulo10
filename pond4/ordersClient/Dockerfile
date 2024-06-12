@@ -8,6 +8,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-EXPOSE 90
+EXPOSE 81
 
-CMD ["fastapi", "run", "src/main.py", "--host", "0.0.0.0", "--port", "90"]
+CMD ["fastapi", "run", "src/main.py", "--host", "0.0.0.0", "--port", "81"]

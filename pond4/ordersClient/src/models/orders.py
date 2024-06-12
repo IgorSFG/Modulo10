@@ -9,7 +9,7 @@ class Ordem(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     id_user = Column(Integer)
     id_produto = Column(Integer)
-    preco_total = Column(float)
+    preco_total = Column(Double)
     status = Column(String)
     data_criacao = Column(DateTime)
     data_modificacao = Column(DateTime)
