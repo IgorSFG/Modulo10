@@ -10,7 +10,7 @@ import logging
 LOGGER = logging.getLogger(__name__)
 
 router = APIRouter(
-    prefix="ordersClient",
+    prefix="/ordersClient",
     tags=["ordersClient"],
 )
 

@@ -11,7 +11,7 @@ import logging
 LOGGER = logging.getLogger(__name__)
 
 router = APIRouter(
-    prefix= "userProducts",
+    prefix= "/userProducts",
     tags=["userProducts", "usuarios"]
 )
 

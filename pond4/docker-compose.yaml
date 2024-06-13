@@ -1,19 +1,19 @@
 version: "3.8"
 
 services:
-  userProducts:
+  userproducts:
     build: ./userProducts/
     ports:
       - "8000:80"
-    container_name: userProducts
+    container_name: userproducts
     volumes:
       - ./logs:/app/logs
 
-  ordersClient:
+  ordersclient:
     build: ./ordersClient/
     ports:
       - "8100:81"
-    container_name: ordersClient
+    container_name: ordersclient
     volumes:
       - ./logs:/app/logs
 
@@ -23,8 +23,8 @@ services:
     volumes:
       - ./logs:/src/logs
     depends_on:
-      - userProducts
-      - ordersClient
+      - userproducts
+      - ordersclient
       - elasticsearch
       - kibana
     network_mode: "host"
