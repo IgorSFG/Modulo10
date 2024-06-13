@@ -23,7 +23,8 @@ services:
     volumes:
       - ./logs:/src/logs
     depends_on:
-      - backend
+      - userProducts
+      - ordersClient
       - elasticsearch
       - kibana
     network_mode: "host"
