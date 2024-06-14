@@ -1,0 +1,148 @@
+_type: export
+__export_format: 4
+__export_date: 2024-06-14T13:52:57.264Z
+__export_source: insomnia.desktop.app:v8.6.1
+resources:
+  - _id: req_6cbbfe582e014bb5abf1f6b6747fe364
+    parentId: wrk_c390055715634ba49b625f4ae98c58ab
+    modified: 1718373062263
+    created: 1718373050488
+    url: "{{ _.url }}/1"
+    name: New Request
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1718373050488
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: wrk_c390055715634ba49b625f4ae98c58ab
+    parentId: null
+    modified: 1718372703829
+    created: 1718372703829
+    name: Test2Collection
+    description: ""
+    scope: collection
+    _type: workspace
+  - _id: req_e17cd4a2d5fc4017ae67b7997a28deb8
+    parentId: wrk_c390055715634ba49b625f4ae98c58ab
+    modified: 1718373033998
+    created: 1718372945488
+    url: "{{ _.url }}/2"
+    name: New Request
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"id": "2",
+        	"title": "teste2",
+        	"content": "NICOLA_ATUALIZADO"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1718372945488
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_bd0e8cddb0704089b0e79d2699b0a84e
+    parentId: wrk_c390055715634ba49b625f4ae98c58ab
+    modified: 1718372893764
+    created: 1718372824236
+    url: "{{ _.url }}"
+    name: New Request
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"id": "2",
+        	"title": "teste2",
+        	"content": "NICOLA"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1718372824236
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_51ffd78346aa446699ed0cd2233a9828
+    parentId: wrk_c390055715634ba49b625f4ae98c58ab
+    modified: 1718372805875
+    created: 1718372779329
+    url: "{{ _.url }}"
+    name: New Request
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1718372779329
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: env_de292f4e8ad537cffbb0410d125d00016d951242
+    parentId: wrk_c390055715634ba49b625f4ae98c58ab
+    modified: 1718372751655
+    created: 1718372703833
+    name: Base Environment
+    data:
+      url: http://localhost:3000/app/blog
+    dataPropertyOrder:
+      "&":
+        - url
+    color: null
+    isPrivate: false
+    metaSortKey: 1718372703833
+    _type: environment
+  - _id: jar_de292f4e8ad537cffbb0410d125d00016d951242
+    parentId: wrk_c390055715634ba49b625f4ae98c58ab
+    modified: 1718372703835
+    created: 1718372703835
+    name: Default Jar
+    cookies: []
+    _type: cookie_jar

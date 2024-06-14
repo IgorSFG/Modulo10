@@ -1,36 +1,31 @@
-# IMG Processor APPI
+# ULTIMATE LOGGER API
 
-Esta é uma aplicação de processamento de imagens em Flutter para dispositivos móveis.
+Sistema de logs de sistemas baseado em produtos, usuários e ordens.
+
+## Sistemas
+
+### Sistema de Produtos e Usuários
+
+O primeiro sistema gerencia produtos e usuários. Oferece funcionalidades de CRUD (Create, Read, Update, Delete) e utilizam FastAPI para a contrução da API e SQLAlchemy para interação com o banco de dados.
+
+### Sistema de Pedidos (Ordens)
+
+O segundo sistema gerencia pedidos, permitindo a criação, leitura, atualização e exclusão (CRUD) de ordens. Ele utiliza FastAPI para a construção da API e SQLAlchemy para interação com o banco de dados.
+
+### Sistema de Logs
 
 ## Pré-requisitos
 
 Antes de começar a usar esta aplicação, verifique se o seguinte software está instalado em seu sistema:
 
-- Flutter SDK: Você pode seguir as instruções de instalação no [site oficial do Flutter](https://flutter.dev/docs/get-started/install).
-- Um dispositivo móvel ou um emulador para testar a aplicação.
 - Docker
 
 ## Configuração
 
-1. Para usar as funcionalidades do app, primeiro é necessário ativar o gateway no diretório `Modulo10/pond3/back`:
+Para ativar o sistema, rode o comando a seguir no diretório `Modulo10/pond4`:
 
 ```bash
 sudo docker compose up
-```
-
-2. Crie um arquivo .env no diretório `Modulo10/pond3/img_processor`:
-
-```bash
-URL        = 'http://<ip-gateway>:8000'
-IMG_FILTER = 'img_filter'
-LOGGER     = 'logger'
-USER_MGMT  = 'user_mgmt'
-```
-
-3. Caso tenha um emulador para testar a aplicação, rode o comando:
-
-```bash
-flutter emulators --launch <device_name>
 ```
 
 ## Execução da Aplicação
