@@ -12,15 +12,17 @@ O primeiro sistema gerencia produtos e usuários. Oferece funcionalidades de CRU
 
 O segundo sistema gerencia pedidos, permitindo a criação, leitura, atualização e exclusão (CRUD) de ordens. Ele utiliza FastAPI para a construção da API e SQLAlchemy para interação com o banco de dados.
 
-### Sistema de Logs
+### Sistema de Gateway
+
+O terceiro é um redirecionador para os sistemas descritos acima. Ele contém logs integrados ao filebeat, elasticsearch e kibana. Você pode visualizá-los no diretório `Modulo10/pond4/logs`.
 
 ## Pré-requisitos
 
-Antes de começar a usar esta aplicação, verifique se o seguinte software está instalado em seu sistema:
+Antes de executar o projeto, verifique se o seguinte software está instalado em seu sistema:
 
 - Docker
 
-## Configuração
+## Execução do projeto
 
 Para ativar o sistema, rode o comando a seguir no diretório `Modulo10/pond4`:
 
@@ -28,24 +30,10 @@ Para ativar o sistema, rode o comando a seguir no diretório `Modulo10/pond4`:
 sudo docker compose up
 ```
 
-## Execução da Aplicação
+## Testes de Rotas
 
-Execute a aplicação no diretório `Modulo10/pond3/img_processor` com o comando:
+Você pode interagir com a API usando qualquer cliente HTTP ou ferramenta de desenvolvimento de API. Aqui está um [exemplo](Insomnia.yaml) usando o insomnia para obter todos as ordens:
 
-```bash
-flutter run
-```
+![insomnia](./img/getOrders.png)
 
-Isso iniciará a aplicação na sua máquina, dispositivo móvel ou emulador.
 
-## IMG Processor APPI em Ação!
-
-### Vídeo
-Você pode conferir um vídeo do funcionamento do aplicativo clicando no link a seguir:
-
-https://drive.google.com/file/d/15Qe4FKK5HWppMIRT0Ex_EZ8C4sQEgsCz/view?usp=sharing
-
-### Log
-Você pode conferir uma imagem do log de um login a seguir:
-
-![img-login-log](./imgs/login-log.png)

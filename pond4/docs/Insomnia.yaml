@@ -1,0 +1,180 @@
+_type: export
+__export_format: 4
+__export_date: 2024-06-15T20:36:01.131Z
+__export_source: insomnia.desktop.app:v8.6.1
+resources:
+  - _id: req_e796711c806b493388b28fa1d9a1ce73
+    parentId: wrk_d47c2472791c4769bbfb6ae26dc97528
+    modified: 1718483690359
+    created: 1718483619254
+    url: "{{ _.url }}/2"
+    name: New Request
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1718483619254
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: wrk_d47c2472791c4769bbfb6ae26dc97528
+    parentId: null
+    modified: 1718482832351
+    created: 1718481591356
+    name: Pond4Collection
+    description: ""
+    scope: collection
+    _type: workspace
+  - _id: req_58fe967584e548bbb2206dc64b094c59
+    parentId: wrk_d47c2472791c4769bbfb6ae26dc97528
+    modified: 1718483611804
+    created: 1718483552719
+    url: "{{ _.url }}/2"
+    name: New Request
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"id": "2",
+        	"id_user" : "5",
+        	"id_produto" : "3",
+        	"preco_total" : "40",
+        	"status" : "Closed",
+        	"data_criacao" : "2024-06-15 20:03:02,131",
+        	"data_modificacao" : "2024-06-15 20:03:02,131"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1718483552719
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_40bf3cdb3a3b434c8c4c7d9b10b8cfa5
+    parentId: wrk_d47c2472791c4769bbfb6ae26dc97528
+    modified: 1718483528303
+    created: 1718483519564
+    url: "{{ _.url }}/1"
+    name: New Request
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1718483519564
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_0eb2a785be2240059d0827f88ab0bf48
+    parentId: wrk_d47c2472791c4769bbfb6ae26dc97528
+    modified: 1718483652997
+    created: 1718482983660
+    url: "{{ _.url }}"
+    name: New Request
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"id": "3",
+        	"id_user" : "3",
+        	"id_produto" : "4",
+        	"preco_total" : "60",
+        	"status" : "Closed",
+        	"data_criacao" : "2024-06-15 20:03:02,131",
+        	"data_modificacao" : "2024-06-15 20:03:02,131"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1718482983660
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_4bbc275235904c1e9216982b6ce306a9
+    parentId: wrk_d47c2472791c4769bbfb6ae26dc97528
+    modified: 1718482966607
+    created: 1718481703512
+    url: "{{ _.url }}"
+    name: New Request
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1718481703512
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: env_15b15d6f8177cad5a3ae5cd9b64022e51195dc0e
+    parentId: wrk_d47c2472791c4769bbfb6ae26dc97528
+    modified: 1718482893960
+    created: 1718481591359
+    name: Base Environment
+    data:
+      url: http://localhost:3000/ordersClient/orders
+    dataPropertyOrder:
+      "&":
+        - url
+    color: null
+    isPrivate: false
+    metaSortKey: 1718481591359
+    _type: environment
+  - _id: jar_15b15d6f8177cad5a3ae5cd9b64022e51195dc0e
+    parentId: wrk_d47c2472791c4769bbfb6ae26dc97528
+    modified: 1718481591361
+    created: 1718481591361
+    name: Default Jar
+    cookies: []
+    _type: cookie_jar

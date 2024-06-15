@@ -1,0 +1,1 @@
+{"time": "2024-06-15 20:03:02,131", "name": "routers.orders", "level": "INFO", "message": "{'message': 'Acessando a rota /orders', 'method': 'GET'}"}
